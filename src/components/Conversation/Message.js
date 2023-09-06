@@ -3,7 +3,7 @@ import { Box, Stack } from "@mui/material";
 import { Chat_History } from "../../data";
 import { MediaMsg, Timeline, ReplyMsg, TextMsgs, LinkMsg,DocMsg } from "./MsgTypes";
 
-const Message = () => {
+const Message = ({menu}) => {
   return (
     <Box p={3} sx={{ overflow: "hidden" }}>
       <Stack spacing={3}>
@@ -32,7 +32,7 @@ const Message = () => {
                   return <TextMsgs el={el} />;
                   
               }
-              break;
+              
 
             default:
               return <></>;

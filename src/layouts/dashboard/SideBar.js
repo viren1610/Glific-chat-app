@@ -10,7 +10,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import Logo from "../../assets/Images/logo.ico";
+import Glificlogo from "../../assets/Images/Glificlogo.avif"
 import { Nav_Buttons, Profile_Menu } from "../../data";
 import { Gear } from "phosphor-react";
 import { faker } from "@faker-js/faker";
@@ -54,7 +54,7 @@ const SideBar = () => {
               borderRadius: 1.5,
             }}
           >
-            <img src={Logo} alt={"chat-app logo"} />
+            <img src={Glificlogo} alt={"chat-app logo"} />
           </Box>
           <Stack
             sx={{ width: "max-content" }}
@@ -93,7 +93,7 @@ const SideBar = () => {
                 </IconButton>
               )
             )}
-            <Divider sx={{ width: "48" }} />
+            <Divider sx={{width:48}}/>
             {selected === 3 ? (
               <Box
                 sx={{
