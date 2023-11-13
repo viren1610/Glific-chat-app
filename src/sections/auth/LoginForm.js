@@ -6,6 +6,7 @@ import FormProvider from "../../components/hook-form/FormProvider";
 import { Alert, InputAdornment, Stack, IconButton,Link,Button } from "@mui/material";
 import { RHFTextField } from "../../components/hook-form";
 import { EyeSlash, Eye } from "phosphor-react";
+import { Link as RouterLink } from "react-router-dom";
 
 const LoginForm = () => {
   const [showPassord, setShowPassword] = useState(false);
@@ -73,7 +74,7 @@ const LoginForm = () => {
         />
       </Stack>
       <Stack alignItems="flex-end" sx={{ my: 2 }}>
-        <Link variant="body2" color="inherit" underline="always">
+        <Link component={RouterLink}to='/auth/reset-password' variant="body2" color="inherit" underline="always">
           Forgot password?
         </Link>
       </Stack>
