@@ -1,105 +1,46 @@
-import { useState } from "react";
-import * as Yup from "yup";
-// form
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-// @mui
-import { Link, Stack, Alert, IconButton, InputAdornment,Button } from "@mui/material";
+import React from "react";
+import { Stack, Typography, Link } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import { Textbox } from "phosphor-react";
+import AuthRegisterForm from "../../sections/auth/RegisterForm";
+import AuthSocial from "../../sections/auth/AuthSocial";
 
-
-import FormProvider, { RHFTextField } from "../../components/hook-form";
-import { Eye, EyeSlash } from "phosphor-react";
-
-
-
-export default function AuthRegisterForm() {
-  const [showPassword, setShowPassword] = useState(false);
-
-  const LoginSchema = Yup.object().shape({
-    firstName: Yup.string().required("First name required"),
-    lastName: Yup.string().required("Last name required"),
-    email: Yup.string()
-      .required("Email is required")
-      .email("Email must be a valid email address"),
-    password: Yup.string().required("Password is required"),
-  });
-
-  const defaultValues = {
-    firstName: "",
-    lastName: "",
-    email: "JohnDoe@gmail.com",
-    password: "demo1234",
-  };
-
-  const methods = useForm({
-    resolver: yupResolver(LoginSchema),
-    defaultValues,
-  });
-
-  const {
-    reset,
-    setError,
-    handleSubmit,
-    formState: { errors },
-  } = methods;
-
-  const onSubmit = async (data) => {
-    try {
-      // submit data to backend
-    } catch (error) {
-      console.error(error);
-      reset();
-      setError("afterSubmit", {
-        ...error,
-        message: error.message,
-      });
-    }
-  };
-
+const Register = () => {
   return (
-    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <Stack spacing={3} mb={4}>
-        {!!errors.afterSubmit && (
-          <Alert severity="error">{errors.afterSubmit.message}</Alert>
-        )}
-
-        <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-          <RHFTextField name="firstName" label="First name" />
-          <RHFTextField name="lastName" label="Last name" />
+    <>
+      <Stack spacing={2} sx={{ mb: 5, position: "relative" }}>
+        <Typography variant="h4">Get Started with Glific</Typography>
+        <Stack direction={"row"} spacing={0.5}>
+          <Typography variant="body2">Already have an account ?</Typography>
+          <Link component={RouterLink} to="/auth/login" variant="subtitle2">
+            Sign Up
+          </Link>
         </Stack>
 
-        <RHFTextField name="email" label="Email address" />
-
-        <RHFTextField
-          name="password"
-          label="Password"
-          type={showPassword ? "text" : "password"}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={() => setShowPassword(!showPassword)}
-                  edge="end"
-                >
-                  {showPassword ? <Eye /> : <EyeSlash />}
-                </IconButton>
-              </InputAdornment>
-            ),
+        {/* Register Form*/}
+        <AuthRegisterForm/>
+        <Typography
+          component={"div"}
+          sx={{
+            color: "text.secondary",
+            mt: 3,
+            typography: "caption",
+            textAlign: "center",
           }}
-        />
+        >
+          {"By signing up, i agree to "}
+          <Link underline="always" color="text.primary">
+            Terms of Sevice
+          </Link>
+          {' and '}
+          <Link underline="always" color="text.primary">
+            Privacy Policy
+          </Link>
+        </Typography>
+        <AuthSocial/>
       </Stack>
-
-      <Button
-        fullWidth
-        color="inherit"
-        size="large"
-        type="submit"
-        variant="contained"
-        sx={{ bgcolor: "#8ECDDD" }}
-      >
-        Create Account
-      </Button>
-    </FormProvider>
+    </>
   );
-}
+};
 
+export default Register;
