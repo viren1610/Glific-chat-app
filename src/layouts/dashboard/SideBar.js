@@ -8,6 +8,7 @@ import {
   Switch,
   Menu,
   MenuItem,
+  Link
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Glificlogo from "../../assets/Images/Glificlogo.avif"
@@ -15,6 +16,7 @@ import { Nav_Buttons, Profile_Menu } from "../../data";
 import { Gear } from "phosphor-react";
 import { faker } from "@faker-js/faker";
 import useSettings from "../../hooks/useSettings";
+import { Link as RouterLink } from "react-router-dom";
 
 const SideBar = () => {
   const theme = useTheme();
@@ -101,9 +103,11 @@ const SideBar = () => {
                   borderRadius: 1.5,
                 }}
               >
+                <Link component={RouterLink} to="/settings">
                 <IconButton>
                   <Gear />
                 </IconButton>
+                </Link>
               </Box>
             ) : (
               <IconButton

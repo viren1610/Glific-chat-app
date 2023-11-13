@@ -6,6 +6,7 @@ import {
   Typography,
   Avatar,
   Divider,
+  Link,
 } from "@mui/material";
 import { useTheme } from "@mui/material";
 import {
@@ -22,6 +23,7 @@ import { faker } from "@faker-js/faker";
 import { Bell } from "phosphor-react";
 import Shortcuts from "../../sections/settings/Shortcuts";
 import { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 const Settings = () => {
   const [openShortcuts, setShortcuts] = useState(false);
@@ -103,9 +105,11 @@ const Settings = () => {
           <Stack direction={"column"} p={3} spacing={5}>
             {/*Header */}
             <Stack direction={"row"} alignItems={"center"} spacing={3}>
-              <IconButton>
-                <ArrowLeft sx={24} />
-              </IconButton>
+              <Link component={RouterLink} to="/app">
+                <IconButton>
+                  <ArrowLeft sx={24} />
+                </IconButton>
+              </Link>
               <Typography variant="h6">Settings</Typography>
             </Stack>
             {/*Avatar */}
