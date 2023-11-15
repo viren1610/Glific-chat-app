@@ -4,90 +4,16 @@ import {
   Typography,
   Stack,
   IconButton,
-  alpha,
-  InputBase,
   Button,
   Divider,
-  Badge,
-  Avatar,
 } from "@mui/material";
 import { ArchiveBox, CircleDashed, MagnifyingGlass } from "phosphor-react";
-import { styled,useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import { ChatList } from "../../data";
-import StyledBadge from "../../components/StyledBadge";
+import ChatEle from "../../components/ChatEle";
+import { Search, SearchIconWrapper, StyledInputBase } from "../../components/Search";
 
 
-
-const ChatEle = ({ id, name, img, msg, time, unread, online }) => {
-    const theme = useTheme()
-  return (
-    <Box
-      sx={{
-        width: "100%",
-        borderRadius: 1,
-        backgroundColor: theme.palette.mode === "light" ? "#fff" : theme.palette.background.default,
-      }}
-      p={2}
-    >
-      <Stack
-        direction="row"
-        alignItems={"center"}
-        justifyContent="space-between"
-      >
-        <Stack direction="row" spacing={2}>
-          {online ? (
-            <StyledBadge
-              overlap="circular"
-              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-              variant="dot"
-            >
-              <Avatar src={img} />
-            </StyledBadge>
-          ) : (
-            <Avatar src={img} />
-          )}
-          <Stack spacing={0.3}>
-            <Typography variant="subtitle2">{name}</Typography>
-            <Typography variant="caption">{msg}</Typography>
-          </Stack>
-        </Stack>
-        <Stack alignItems={"center"} spacing={2}>
-          <Typography sx={{ fontWeight: 600 }} variant="caption">
-            {time}
-          </Typography>
-          <Badge color="primary" badgeContent={2}></Badge>
-        </Stack>
-      </Stack>
-    </Box>
-  );
-};
-
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: 20,
-  backgroundColor: alpha(theme.palette.background.default, 1),
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-}));
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-Input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em +${theme.spacing(4)})`,
-    width: "100%",
-  },
-}));
 
 const Chats = () => {
     const theme = useTheme();

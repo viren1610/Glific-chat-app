@@ -3,10 +3,10 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormProvider from "../../components/hook-form/FormProvider";
-import { Alert, InputAdornment, Stack, IconButton,Link,Button } from "@mui/material";
+import { Alert, InputAdornment, Stack, IconButton,Button } from "@mui/material";
 import { RHFTextField } from "../../components/hook-form";
 import { EyeSlash, Eye } from "phosphor-react";
-import { Link as RouterLink } from "react-router-dom";
+
 
 
 const NewPasswordForm = () => {
