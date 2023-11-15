@@ -8,18 +8,39 @@ import {
   Switch,
   Menu,
   MenuItem,
-  Link
+  Link,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import Glificlogo from "../../assets/Images/Glificlogo.avif"
+import Glificlogo from "../../assets/Images/Glificlogo.avif";
 import { Nav_Buttons, Profile_Menu } from "../../data";
 import { Gear } from "phosphor-react";
 import { faker } from "@faker-js/faker";
 import useSettings from "../../hooks/useSettings";
 import { Link as RouterLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+const getPath = (index) => {
+  switch (index) {
+    case 0:
+      return "/app";
+
+    case 1:
+      return "/group";
+
+    case 2:
+      return "/call";
+
+    case 3:
+      return "settings";
+
+    default:
+      break;
+  }
+};
 
 const SideBar = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [selected, setSelected] = useState(0);
   const { onToggleMode } = useSettings();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -81,7 +102,10 @@ const SideBar = () => {
                 </Box>
               ) : (
                 <IconButton
-                  onClick={() => setSelected(el.index)}
+                  onClick={() => {
+                    setSelected(el.index);
+                    navigate(getPath(el.index));
+                  }}
                   sx={{
                     width: "max-content",
                     color:
@@ -95,7 +119,7 @@ const SideBar = () => {
                 </IconButton>
               )
             )}
-            <Divider sx={{width:48}}/>
+            <Divider sx={{ width: 48 }} />
             {selected === 3 ? (
               <Box
                 sx={{
@@ -103,11 +127,11 @@ const SideBar = () => {
                   borderRadius: 1.5,
                 }}
               >
-                <Link component={RouterLink} to="/settings">
-                <IconButton>
+                <IconButton onClick={()=>{
+                  navigate(getPath(3))
+                }}>
                   <Gear />
                 </IconButton>
-                </Link>
               </Box>
             ) : (
               <IconButton
