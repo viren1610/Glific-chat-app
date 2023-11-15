@@ -1,16 +1,19 @@
 import { faker } from "@faker-js/faker";
-import { Avatar, Badge, Box,Stack, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles"
+import { Avatar, Badge, Box, Stack, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import StyledBadge from "./StyledBadge";
 
 const ChatEle = ({ id, name, img, msg, time, unread, online }) => {
-    const theme = useTheme()
+  const theme = useTheme();
   return (
     <Box
       sx={{
         width: "100%",
         borderRadius: 1,
-        backgroundColor: theme.palette.mode === "light" ? "#fff" : theme.palette.background.default,
+        backgroundColor:
+          theme.palette.mode === "light"
+            ? "#fff"
+            : theme.palette.background.default,
       }}
       p={2}
     >
@@ -46,4 +49,4 @@ const ChatEle = ({ id, name, img, msg, time, unread, online }) => {
     </Box>
   );
 };
-export default ChatEle
+export default ChatEle;
