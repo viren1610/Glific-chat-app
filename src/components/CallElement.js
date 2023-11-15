@@ -3,7 +3,12 @@ import { Avatar, Box, IconButton, Stack, Typography } from "@mui/material";
 import React from "react";
 import { faker } from "@faker-js/faker";
 import StyledBadge from "./StyledBadge";
-import { ArrowDownLeft, ArrowUpRight, Phone } from "phosphor-react";
+import {
+  ArrowDownLeft,
+  ArrowUpRight,
+  Phone,
+  VideoCamera,
+} from "phosphor-react";
 
 const CallLogElement = ({ online, incoming, missed }) => {
   const theme = useTheme();
@@ -52,7 +57,7 @@ const CallLogElement = ({ online, incoming, missed }) => {
             </Stack>
           </Stack>
           <IconButton>
-            <Phone color="green"/>
+            <Phone color="green" />
           </IconButton>
         </Stack>
       </Box>
@@ -60,6 +65,56 @@ const CallLogElement = ({ online, incoming, missed }) => {
   );
 };
 
-const CallElement = () => {};
+const CallElement = ({ online }) => {
+  const theme = useTheme();
+  return (
+    <>
+      <Box
+        sx={{
+          width: "100%",
+          borderRadius: 1,
+          backgroundColor:
+            theme.palette.mode === "light"
+              ? "#fff"
+              : theme.palette.background.default,
+        }}
+        p={2}
+      >
+        <Stack
+          direction={"row"}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+        >
+          <Stack spacing={2} direction={"row"} alignItems={"center"}>
+            {online ? (
+              <StyledBadge
+                overlap="circular"
+                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                variant="dot"
+              >
+                <Avatar src={faker.image.avatar()} />
+              </StyledBadge>
+            ) : (
+              <Avatar src={faker.image.avatar()} />
+            )}
+            <Stack spacing={0.3}>
+              <Typography variant="subtitle2">
+                {faker.name.fullName()}
+              </Typography>
+            </Stack>
+          </Stack>
+          <Stack direction={"row"} alignItems={"center"}>
+            <IconButton>
+              <Phone color="green" />
+            </IconButton>
+            <IconButton>
+              <VideoCamera color="green" />
+            </IconButton>
+          </Stack>
+        </Stack>
+      </Box>
+    </>
+  );
+};
 
 export { CallLogElement, CallElement };

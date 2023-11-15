@@ -153,8 +153,38 @@ const CallList = [
   },
 ];
 
-
-
+const MembersList = [
+  {
+    id: 0,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online: true,
+  },
+  {
+    id: 1,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online: false,
+  },
+  {
+    id: 2,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online: true,
+  },
+  {
+    id: 3,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online: false,
+  },
+  {
+    id: 4,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online: false,
+  },
+];
 
 const ChatList = [
   {
@@ -359,5 +389,6 @@ export {
   Message_options,
   SHARED_DOCS,
   SHARED_LINKS,
-  CallList
+  CallList,
+  MembersList,
 };
